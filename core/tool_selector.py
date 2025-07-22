@@ -1,3 +1,4 @@
+from tools.registry import tool_dict
 TOOL_MAP = {
     "diagnose_engine": "EngineDiagnosticTool",
     "check_temperature": "TemperatureCheckTool",
@@ -6,4 +7,4 @@ TOOL_MAP = {
 
 
 def select_tool(intent):
-    return TOOL_MAP.get(intent, "No tool available for this intent")
+    return TOOL_MAP.get(intent, tool_dict())
