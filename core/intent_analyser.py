@@ -1,7 +1,12 @@
-# ava/core/intent_analyzer.py
+INTENT_KEYWORDS = {
+    "diagnose_engine": ["check engine", "engine fault", "engine error"],
+    "check_temperature": ["temperature", "heat", "overheating"],
+    "oil_pressure_alert": ["oil pressure", "low oil", "check oil"],
+}
+
 
 def analyse_intent(user_input):
-    # MVP stub: just echo back what user typed
-    intent = "echo"
-    params = {"message": user_input}
-    return intent, params
+    for intent, keywords in INTENT_KEYWORDS.items():
+        if any(keyword in user_input.lower() for keyword in keywords):
+            return intent
+    return "unknown_intent"

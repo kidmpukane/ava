@@ -1,7 +1,9 @@
-# ava/core/tool_selector.py
+TOOL_MAP = {
+    "diagnose_engine": "EngineDiagnosticTool",
+    "check_temperature": "TemperatureCheckTool",
+    "oil_pressure_alert": "OilPressureMonitor",
+}
 
-from tools.registry import TOOL_REGISTRY
 
-
-def select_tool(intent, params):
-    return TOOL_REGISTRY.get(intent)
+def select_tool(intent):
+    return TOOL_MAP.get(intent, "No tool available for this intent")
