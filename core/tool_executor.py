@@ -1,4 +1,15 @@
-# ava/core/tool_executor.py
+from tools.registry import diagnose_engine, check_temperature, oil_pressure_alert
 
-def execute_tool(tool_fn, params):
-    return tool_fn(**params)
+suggested_tools = {
+    "EngineDiagnosticTool": diagnose_engine,
+    "TemperatureCheckTool": check_temperature,
+    "OilPressureMonitor": oil_pressure_alert,
+}
+
+
+def tool_executor(tool, suggested_tool):
+    # Take selected_tool as input
+
+    # Execute tool
+    # Report
+    pass
