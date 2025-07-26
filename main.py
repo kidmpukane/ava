@@ -1,6 +1,7 @@
 from core.input_handler import get_user_input
 from core.intent_analyser import analyse_intent
 from core.tool_selector import select_tool
+import core.tool_executor as tool_executor
 
 
 def main():
@@ -8,6 +9,8 @@ def main():
     user_input = get_user_input()
     intent = analyse_intent(user_input)
     tool = select_tool(intent)
+    tool_executor.tool_executor(tool)
+    print("🔧 Tool executed successfully.")
 
     print(f"\n🔎 Identified Intent: {intent}")
     print(f"🔧 Suggested Tool: {tool}")
