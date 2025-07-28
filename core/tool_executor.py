@@ -12,5 +12,5 @@ def tool_executor(suggested_tool):
     if tool:
         tool()
     else:
-        raise ValueError(
+        return print(
             f"Tool '{suggested_tool}' is not recognized or available.")

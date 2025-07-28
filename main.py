@@ -1,6 +1,7 @@
 from core.input_handler import get_user_input
 from core.intent_analyser import analyse_intent
 from core.tool_selector import select_tool
+# from tools import engine_diagnostic
 import core.tool_executor as tool_executor
 
 
