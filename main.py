@@ -1,9 +1,12 @@
-from core.input_handler import get_user_input, what_next
+from core.input_handler import get_user_input
+from core.intent_analyser import intent_analyser
 
 
 def main():
-    defined_input = what_next(get_user_input())
-    return defined_input
+    defined_input = get_user_input()
+    print(defined_input)
+    # user_intent = intent_analyser(defined_input)
+    # return user_intent
 
 
 if __name__ == "__main__":

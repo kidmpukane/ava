@@ -1,24 +1,20 @@
 import json
+from datetime import datetime
 
 
 def get_user_input():
     command = input("📥 Enter command (e.g., 'check engine health'): ")
+    machine_id = (input("What is the Machine ID In Question?: "))
+    sensor = input(
+        f"What is the Sesnsor incharge of Machine ID: {machine_id}?: ")
+    now = datetime.now()
+    window = now.strftime("%H:%M:%S")
 
-    telemetry_raw = input(
-        "📊 Enter fake telemetry (JSON) or leave empty: ").strip()
-    telemetry = {}
+    req_structure = {
+        "command": command,
+        "machine_id": int(machine_id),
+        "sensor": (f"Sensor_{int(sensor)}"),
+        "window": window,
+    }
 
-    if telemetry_raw:
-        try:
-            telemetry = json.loads(telemetry_raw)
-        except json.JSONDecodeError:
-            print("⚠️ Invalid JSON. Proceeding with empty telemetry.")
-
-    return command, telemetry
-
-
-def what_next(tel):
-    if tel:
-        return print(tel)
-    else:
-        print("nothing...")
+    return req_structure
