@@ -1,5 +1,3 @@
-# core/input_handler.py
-
 import json
 
 
@@ -17,3 +15,10 @@ def get_user_input():
             print("⚠️ Invalid JSON. Proceeding with empty telemetry.")
 
     return command, telemetry
+
+
+def what_next(tel):
+    if tel:
+        return print(tel)
+    else:
+        print("nothing...")
