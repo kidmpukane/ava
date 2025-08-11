@@ -3,7 +3,7 @@ import torch
 
 
 class IntentClassifier:
-    def __init__(self, intent_examples: dict[str, list[str]], model_name: str = "all-MiniLM-L6-v2", threshold: float = 0.6):
+    def __init__(self, intent_examples: dict[str, list[str]], model_name: str = "all-MiniLM-L6-v2", threshold: float = 0.45):
         self.model = SentenceTransformer(model_name)
         self.intent_examples = intent_examples
         self.threshold = threshold

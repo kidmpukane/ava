@@ -4,9 +4,13 @@ from core.intent_analyser import intent_analyser
 
 def main():
     defined_input = get_user_input()
-    print(defined_input)
-    # user_intent = intent_analyser(defined_input)
-    # return user_intent
+    user_intent = intent_analyser(
+        defined_input["command"],
+        defined_input["machine_id"],
+        defined_input["sensor"],
+        defined_input["window"]
+    )
+    return print(user_intent)
 
 
 if __name__ == "__main__":
