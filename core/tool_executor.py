@@ -1,5 +1,3 @@
-# core/tool_executor.py
-
 from tools.registry import diagnose_engine, check_temperature, oil_pressure_alert
 
 TOOL_LIST = {
@@ -9,25 +7,22 @@ TOOL_LIST = {
 }
 
 
-def tool_executor(suggested_tool, **kwargs):
-    tool = TOOL_LIST.get(suggested_tool)
-    if tool:
-        try:
-            result = tool(**kwargs)
+def execute_tool(retrive_tool):
+    if type(retrive_tool) == dict:
+        tool_name = retrive_tool["tool"]
+        if tool_name:
+            tool_fn = TOOL_LIST.get(tool_name)
+            if not tool_fn:
+                print(f"⚠️ Tool '{tool_name}' not found in registry.")
+                return None
+
+            result = tool_fn()
             return {
-                "success": True,
-                "tool": suggested_tool,
-                "output": result
+                "status": "success",
+                "output": result,
+                "metadata": retrive_tool,
             }
-        except Exception as e:
-            return {
-                "success": False,
-                "tool": suggested_tool,
-                "error": f"Error running tool: {e}"
-            }
+        else:
+            print("Error occured during the execution phase...")
     else:
-        return {
-            "success": False,
-            "tool": suggested_tool,
-            "error": f"Tool '{suggested_tool}' is not recognized or available."
-        }
+        return ("Error occured in intent layer... Your intentions could not be processed")

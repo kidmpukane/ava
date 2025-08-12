@@ -1,26 +1,13 @@
-# ava/tools/registry.py
-
 def diagnose_engine():
-    checklist = [
-        "Checking engine temperature...",
-        "Checking oil pressure levels...",
-        "Scanning for error codes...",
-        "Listening for unusual engine noises...",
-        "Inspecting spark plugs and ignition...",
-        "Verifying fuel injection system...",
-        "Analyzing exhaust emissions..."
-    ]
-
-    for task in checklist:
-        print(task)
+    return "🔧 Engine check complete."
 
 
 def check_temperature():
-    print("✅ Engine temperature is within safe operating range.")
+    return "🔥 Temperature within normal range."
 
 
 def oil_pressure_alert():
-    print("⚠️ Oil pressure is slightly below optimal. Recommend inspection.")
+    return "🛢 Oil pressure nominal."
 
 
 def tool_dict():

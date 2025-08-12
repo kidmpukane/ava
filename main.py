@@ -1,5 +1,7 @@
 from core.input_handler import get_user_input
 from core.intent_analyser import intent_analyser
+from core.tool_selector import select_tool
+from core.tool_executor import execute_tool
 
 
 def main():
@@ -10,7 +12,8 @@ def main():
         defined_input["sensor"],
         defined_input["window"]
     )
-    return print(user_intent)
+    process_intent = execute_tool(select_tool(user_intent))
+    return print(process_intent)
 
 
 if __name__ == "__main__":
