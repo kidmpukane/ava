@@ -20,4 +20,10 @@ if __name__ == "__main__":
     main()
 
 
-# {"intent": "check_temperature", "confidence": 0.87, "machine_id": 12, "parameters": {"sensor": "Sensor_4", "window": 12}, "raw_input": "Check Sensor_4 temperature for machine 12 over last 12 hours"}
+# {"intent": "check_temperature",
+# "confidence": 0.87,
+# "machine_id": 12,
+# "parameters":
+#       {"sensor": "Sensor_4",
+#        "window": 12}, "raw_input": "
+#               Check Sensor_4 temperature for machine 12 over last 12 hours"}

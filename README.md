@@ -27,10 +27,10 @@ It is designed to be flexible, extendable, and decoupled, allowing developers to
 
 ## **Core Philosophy**
 
-* **Alignment:** Ensure human goals match machine actions.
-* **Faithful Interpretation:** Preserve intent and context without “over-correcting” the user.
-* **Structured Clarity:** Turn uncertainty into deterministic results.
-* **Modular Exploration:** Each component can be tested and expanded independently.
+- **Alignment:** Ensure human goals match machine actions.
+- **Faithful Interpretation:** Preserve intent and context without “over-correcting” the user.
+- **Structured Clarity:** Turn uncertainty into deterministic results.
+- **Modular Exploration:** Each component can be tested and expanded independently.
 
 ---
 
@@ -112,9 +112,9 @@ Returned Result
     "machine_id": 4,
     "intent": "vibration_analysis",
     "results": {
-        "RMS": 4.2,
-        "peaks": [5.1, 4.8],
-        "anomalies": 0
+      "RMS": 4.2,
+      "peaks": [5.1, 4.8],
+      "anomalies": 0
     }
   }
 }
@@ -128,15 +128,45 @@ Returned Result
 2. Install dependencies (if any Python libraries are required for ML models or visualization).
 3. Run the CLI or dashboard simulator:
 
+## Requirements
+
+- Python 3.10 or higher
+
+## Installation
+
+- Clone the repository
+
+```bash
+git clone <https://github.com/kidmpukane/aval>
+cd <avaa>
+```
+
+- Create a virtual environment (recommended)
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+- Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+```
+
+```
+
 ```bash
 python main.py
 ```
 
 4. Test different intents:
 
-* `vibration_analysis`
-* `temperature_monitoring`
-* `rul_estimate`
+- `vibration_analysis`
+- `temperature_monitoring`
+- `rul_estimate`
 
 5. Extend modules independently without breaking the rest of the system.
 
@@ -144,15 +174,14 @@ python main.py
 
 ## **Future Directions**
 
-* **Machine Learning Integration:** Real predictive models for vibration, temperature, and RUL.
-* **Real-Time Telemetry:** Connect to industrial sensors via API or message queues.
-* **Interactive Dashboard:** Live Nevo or Plotly-based visualization.
-* **Agent Orchestration:** Enable AVA to handle multi-step requests or coordinate multiple machines.
-* **Expanded Toolset:** Add more predictive maintenance diagnostics and industrial analytics tools.
+- **Machine Learning Integration:** Real predictive models for vibration, temperature, and RUL.
+- **Real-Time Telemetry:** Connect to industrial sensors via API or message queues.
+- **Interactive Dashboard:** Live Nevo or Plotly-based visualization.
+- **Agent Orchestration:** Enable AVA to handle multi-step requests or coordinate multiple machines.
+- **Expanded Toolset:** Add more predictive maintenance diagnostics and industrial analytics tools.
 
 ---
 
 ## **Philosophical View**
 
 AVA is a loop: human ambiguity → machine precision → human clarity. Every layer exists to reduce friction between intention and execution. It’s modular, transparent, and built for experimentation as much as production.
-
