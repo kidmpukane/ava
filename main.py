@@ -22,12 +22,13 @@ def main():
         defined_input["window"]
     )
 
+    print(user_intent)
     print("\n  ┌─ Intent Analysis")
     print("  │")
     print(f"  │  Intent:       {user_intent['intent']}")
     print(f"  │  Machine ID:   {user_intent['machine_id']}")
-    print(f"  │  Sensor:       {user_intent['sensor']}")
-    print(f"  │  Window:       {user_intent['window']}")
+    print(f"  │  Sensor:       {user_intent['params']['sensor']}")
+    print(f"  │  Window:       {user_intent['params']['window']}")
     print("  └───────────────────────────────\n")
     time.sleep(0.4)
 
