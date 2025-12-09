@@ -22,7 +22,6 @@ def main():
         defined_input["window"]
     )
 
-    print(user_intent)
     print("\n  ┌─ Intent Analysis")
     print("  │")
     print(f"  │  Intent:       {user_intent['intent']}")
