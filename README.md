@@ -33,19 +33,12 @@ AVA is a modular reasoning engine designed for flexibility, extendability, and r
 
 ## ✨ Core Philosophy
 
-<<<<<<< HEAD
-- **Alignment:** Ensure human goals match machine actions.
-- **Faithful Interpretation:** Preserve intent and context without “over-correcting” the user.
-- **Structured Clarity:** Turn uncertainty into deterministic results.
-- **Modular Exploration:** Each component can be tested and expanded independently.
-=======
 | Principle                   | Description                                                                               |
 | --------------------------- | ----------------------------------------------------------------------------------------- |
 | **Alignment**               | Ensure the human's goal is perfectly matched by the machine's executed action.            |
 | **Faithful Interpretation** | Preserve the user's original intent and context without over-correction or hallucination. |
 | **Structured Clarity**      | Convert ambiguous inputs into deterministic and reliable results.                         |
 | **Modular Exploration**     | Enable independent testing and expansion of every component for rapid iteration.          |
->>>>>>> c2f5c5000b52a89f45f476bacf5dcfbd16fc7e7a
 
 ---
 
@@ -136,15 +129,9 @@ Examples to try after startup:
     "machine_id": 4,
     "intent": "vibration_analysis",
     "results": {
-<<<<<<< HEAD
-      "RMS": 4.2,
-      "peaks": [5.1, 4.8],
-      "anomalies": 0
-=======
       "RMS_velocity": 4.2,
       "spectral_peaks": [5.1, 4.8],
       "anomalies_detected": 0
->>>>>>> c2f5c5000b52a89f45f476bacf5dcfbd16fc7e7a
     }
   }
 }
@@ -159,65 +146,3 @@ Examples to try after startup:
 * **Interactive Dashboard**: Visualize streaming results with Plotly or similar tools.
 * **Agent Orchestration**: Enable multi-step reasoning for complex requests.
 * **Expanded Toolset**: Add advanced predictive maintenance diagnostics and industrial analytics tools.
-
-<<<<<<< HEAD
-## Requirements
-
-- Python 3.10 or higher
-
-## Installation
-
-- Clone the repository
-
-```bash
-git clone <https://github.com/kidmpukane/aval>
-cd <avaa>
-```
-
-- Create a virtual environment (recommended)
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-- Install dependencies
-
-```bash
-pip install -r requirements.txt
-```
-
-```
-
-```
-
-```bash
-python main.py
-```
-
-4. Test different intents:
-
-- `vibration_analysis`
-- `temperature_monitoring`
-- `rul_estimate`
-
-5. Extend modules independently without breaking the rest of the system.
-
----
-
-## **Future Directions**
-
-- **Machine Learning Integration:** Real predictive models for vibration, temperature, and RUL.
-- **Real-Time Telemetry:** Connect to industrial sensors via API or message queues.
-- **Interactive Dashboard:** Live Nevo or Plotly-based visualization.
-- **Agent Orchestration:** Enable AVA to handle multi-step requests or coordinate multiple machines.
-- **Expanded Toolset:** Add more predictive maintenance diagnostics and industrial analytics tools.
-
----
-
-## **Philosophical View**
-
-AVA is a loop: human ambiguity → machine precision → human clarity. Every layer exists to reduce friction between intention and execution. It’s modular, transparent, and built for experimentation as much as production.
-=======
-
->>>>>>> c2f5c5000b52a89f45f476bacf5dcfbd16fc7e7a
