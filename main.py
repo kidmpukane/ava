@@ -26,6 +26,7 @@ def main():
     print("\n  ┌─ Intent Analysis")
     print("  │")
     print(f"  │  Intent:       {user_intent['intent']}")
+    print(f"  │  Confidence Score:       {user_intent['score']}")
     print(f"  │  Machine ID:   {user_intent['machine_id']}")
     print(f"  │  Sensor:       {user_intent['params']['sensor']}")
     print(f"  │  Window:       {user_intent['params']['window']}")
