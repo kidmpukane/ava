@@ -1,95 +1,112 @@
-# **AVA – Adaptive Virtual Assistant for Industrial Diagnostics**
+# ⚙️ AVA – Adaptive Virtual Assistant for Industrial Diagnostics
 
-**Philosophical Purpose**
-AVA exists to shrink the gap between human intention and machine understanding. It takes the messiness of human thought — shorthand, incomplete descriptions, intuition — and translates it into structured operations that machines can execute, delivering clarity back to the human operator.
+## 💡 Philosophical Purpose
 
----
+AVA bridges the gap between human intuition and machine precision. It handles the natural ambiguity of human operators—shorthand, incomplete descriptions, or high-level requests—and translates them into structured, executable operations for industrial IoT and predictive maintenance systems.
 
-## **Table of Contents**
-
-1. [Overview](#overview)
-2. [Core Philosophy](#core-philosophy)
-3. [High-Level Architecture](#high-level-architecture)
-4. [Module Breakdown](#module-breakdown)
-5. [Sample Input / Output](#sample-input--output)
-6. [Getting Started](#getting-started)
-7. [Future Directions](#future-directions)
+The outcome: clear, actionable diagnostics that reduce friction and accelerate decision-making.
 
 ---
 
-## **Overview**
+## 🧭 Table of Contents
 
-AVA is a modular reasoning engine for industrial IoT and predictive maintenance. It can process human language or structured telemetry, translate it into actionable insights, and provide machine-readable and human-readable outputs.
-
-It is designed to be flexible, extendable, and decoupled, allowing developers to experiment with each module independently.
-
----
-
-## **Core Philosophy**
-
-* **Alignment:** Ensure human goals match machine actions.
-* **Faithful Interpretation:** Preserve intent and context without “over-correcting” the user.
-* **Structured Clarity:** Turn uncertainty into deterministic results.
-* **Modular Exploration:** Each component can be tested and expanded independently.
+* [Key Features](#-key-features)
+* [Core Philosophy](#-core-philosophy)
+* [Architecture and Data Flow](#-architecture-and-data-flow)
+* [Module Breakdown](#-module-breakdown)
+* [Getting Started](#-getting-started)
+* [Sample Interaction](#-sample-interaction)
+* [Future Roadmap](#-future-roadmap)
 
 ---
 
-## **High-Level Architecture**
+## 🛠️ Key Features
 
+AVA is a modular reasoning engine designed for flexibility, extendability, and rapid experimentation across industrial diagnostics.
+
+* **Adaptive Input**: Processes natural human language (e.g., `"Check temp on Machine 4"`) and structured telemetry data.
+* **Actionable Insights**: Converts requests into specific diagnostic actions (`vibration_analysis`, `rul_estimate`).
+* **Structured Output**: Returns results as human-readable summaries and machine-readable JSON.
+* **Decoupled Design**: Modules can be independently developed, tested, or swapped (e.g., replace an intent classifier without affecting the pipeline).
+
+---
+
+## ✨ Core Philosophy
+
+| Principle                   | Description                                                                               |
+| --------------------------- | ----------------------------------------------------------------------------------------- |
+| **Alignment**               | Ensure the human's goal is perfectly matched by the machine's executed action.            |
+| **Faithful Interpretation** | Preserve the user's original intent and context without over-correction or hallucination. |
+| **Structured Clarity**      | Convert ambiguous inputs into deterministic and reliable results.                         |
+| **Modular Exploration**     | Enable independent testing and expansion of every component for rapid iteration.          |
+
+---
+
+## 🧠 Architecture and Data Flow
+
+AVA follows a linear, decoupled pipeline that separates logic from execution:
+
+**Flow Summary**
+
+1. **Input Layer**: Captures raw commands (text) or telemetry data.
+2. **Analysis Layer**: Extracts intent, parameters, target machine ID, and confidence score.
+3. **Permission Layer**: Validates request safety and authorization.
+4. **Tooling Layer**: Maps intent to the appropriate diagnostic tool, retrieves data, and runs analysis (ML model, calculation, or script).
+5. **Output Layer**: Produces concise, human-readable summaries and structured JSON for downstream systems.
+
+---
+
+## 🧩 Module Breakdown
+
+| Layer                   | Responsibility                                         | Key Technical Location                                                            |
+| ----------------------- | ------------------------------------------------------ | --------------------------------------------------------------------------------- |
+| **Input Handler**       | Capture raw input (text, API call, or telemetry)       | `_core/input_handler.py`                                                          |
+| **Intent Analysis**     | Classify intent, extract parameters, assign confidence | `_core/input_analyser.py`, `_core/intent_classifier.py`                           |
+| **Permissions & Scope** | Validate request safety and authorization              | `_utils/permissions.py`                                                           |
+| **Tool Selector**       | Map classified intent to execution module              | `_core/tool_selector.py`, `_tools/registry.py`                                    |
+| **Tool Executor**       | Execute diagnostics, ML models, data retrieval         | `_core/tool_executor.py`, `_tools/*.py`, `_data/*`, `_library/machine_profiles/*` |
+| **Response Generator**  | Summarize results, generate structured JSON            | `_core/response_generator.py`                                                     |
+| **Output Handler**      | Deliver results to CLI, dashboard, or agent            | `_core/output_handler.py`                                                         |
+
+---
+
+## 🚀 Getting Started
+
+### Requirements
+
+* Python 3.10 or higher
+
+### Installation
+
+```bash
+git clone https://github.com/kidmpukane/ava
+cd ava
+python -m venv venv
+source venv/bin/activate   # Windows: venv\Scripts\activate
+pip install -r requirements.txt
 ```
-User Input
-   ↓
-_core/input_handler.py
-   ↓
-_core/input_analyser.py
-_core/intent_classifier.py
-   ↓
-_utils/permissions.py
-   ↓
-_core/tool_selector.py
-_tools/registry.py
-   ↓
-_core/tool_executor.py
-_tools/*.py
-_data/telemetry.py
-_library/machine_profiles/*
-   ↓
-_core/response_generator.py
-   ↓
-_core/output_handler.py
-   ↓
-Returned Result
+
+### Running AVA
+
+Start the main CLI or dashboard simulator:
+
+```bash
+python main.py
 ```
 
-**Flow Summary:**
+### Testing Intents
 
-1. **Input Layer:** Capture raw commands and telemetry.
-2. **Intent Analysis Layer:** Extract intent, parameters, confidence scores.
-3. **Permission & Scope Layer:** Validate that requests are allowed and safe.
-4. **Tool Selection Layer:** Map intent to appropriate diagnostic tool.
-5. **Tool Execution Layer:** Run diagnostics, models, or analyses.
-6. **Response Generation Layer:** Convert raw output into human-readable summaries and structured JSON.
-7. **Output Layer:** Deliver results to CLI, dashboard, API, or another agent.
+Examples to try after startup:
+
+* `vibration_analysis`
+* `temperature_monitoring`
+* `rul_estimate`
 
 ---
 
-## **Module Breakdown**
+## 📝 Sample Interaction
 
-| Layer               | Responsibility                                                 | Technical Location                                                             |
-| ------------------- | -------------------------------------------------------------- | ------------------------------------------------------------------------------ |
-| Input Handler       | Capture raw input (text or telemetry)                          | `_core/input_handler.py`                                                       |
-| Intent Analysis     | Classify intent, extract parameters, machine ID, confidence    | `_core/input_analyser.py` `_core/intent_classifier.py`                         |
-| Permissions & Scope | Validate request safety, authorization                         | `_utils/permissions.py`                                                        |
-| Tool Selector       | Map intent → tool/module                                       | `_core/tool_selector.py` `_tools/registry.py`                                  |
-| Tool Executor       | Execute diagnostics/ML/analysis                                | `_core/tool_executor.py` `_tools/*.py` `_data/*` `_library/machine_profiles/*` |
-| Response Generator  | Summarize results, generate human-readable & structured output | `_core/response_generator.py`                                                  |
-| Output Handler      | Deliver result to dashboard, API, CLI                          | `_core/output_handler.py` `_utils/logger.py`                                   |
-
----
-
-## **Sample Input / Output**
-
-**Input (via CLI or agent):**
+**Input (via API or Agent)**
 
 ```json
 {
@@ -102,19 +119,19 @@ Returned Result
 }
 ```
 
-**Output (JSON + Summary):**
+**Output (JSON + Summary)**
 
 ```json
 {
   "status": "success",
-  "summary": "Machine 4 ran 'vibration_analysis' → All vibration metrics nominal.",
+  "summary": "Machine 4 ran 'vibration_analysis' using Sensor_12 data. All vibration metrics are nominal and within baseline tolerances.",
   "raw_output": {
     "machine_id": 4,
     "intent": "vibration_analysis",
     "results": {
-        "RMS": 4.2,
-        "peaks": [5.1, 4.8],
-        "anomalies": 0
+      "RMS_velocity": 4.2,
+      "spectral_peaks": [5.1, 4.8],
+      "anomalies_detected": 0
     }
   }
 }
@@ -122,37 +139,12 @@ Returned Result
 
 ---
 
-## **Getting Started**
+## 🛣️ Future Roadmap
 
-1. Clone the repository.
-2. Install dependencies (if any Python libraries are required for ML models or visualization).
-3. Run the CLI or dashboard simulator:
+* **Machine Learning Integration**: Deploy predictive models (vibration, temperature, RUL).
+* **Real-Time Telemetry**: Connect to live sensors via message queues (Kafka) or industrial APIs.
+* **Interactive Dashboard**: Visualize streaming results with Plotly or similar tools.
+* **Agent Orchestration**: Enable multi-step reasoning for complex requests.
+* **Expanded Toolset**: Add advanced predictive maintenance diagnostics and industrial analytics tools.
 
-```bash
-python main.py
-```
-
-4. Test different intents:
-
-* `vibration_analysis`
-* `temperature_monitoring`
-* `rul_estimate`
-
-5. Extend modules independently without breaking the rest of the system.
-
----
-
-## **Future Directions**
-
-* **Machine Learning Integration:** Real predictive models for vibration, temperature, and RUL.
-* **Real-Time Telemetry:** Connect to industrial sensors via API or message queues.
-* **Interactive Dashboard:** Live Nevo or Plotly-based visualization.
-* **Agent Orchestration:** Enable AVA to handle multi-step requests or coordinate multiple machines.
-* **Expanded Toolset:** Add more predictive maintenance diagnostics and industrial analytics tools.
-
----
-
-## **Philosophical View**
-
-AVA is a loop: human ambiguity → machine precision → human clarity. Every layer exists to reduce friction between intention and execution. It’s modular, transparent, and built for experimentation as much as production.
 
