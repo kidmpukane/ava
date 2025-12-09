@@ -2,18 +2,53 @@ from core.input_handler import get_user_input
 from core.intent_analyser import intent_analyser
 from core.tool_selector import select_tool
 from core.tool_executor import execute_tool
+from utils.startup import palantir_boot
+import time
 
 
 def main():
+    palantir_boot()
+
     defined_input = get_user_input()
+
+    print("  Processing Input...")
+    time.sleep(0.25)
+
+    # --- Step 1: Intent Analysis ---
     user_intent = intent_analyser(
         defined_input["command"],
         defined_input["machine_id"],
         defined_input["sensor"],
         defined_input["window"]
     )
-    process_intent = execute_tool(select_tool(user_intent))
-    return print(process_intent)
+
+    print("\n  ┌─ Intent Analysis")
+    print("  │")
+    print(f"  │  Intent:       {user_intent['intent']}")
+    print(f"  │  Machine ID:   {user_intent['machine_id']}")
+    print(f"  │  Sensor:       {user_intent['sensor']}")
+    print(f"  │  Window:       {user_intent['window']}")
+    print("  └───────────────────────────────\n")
+    time.sleep(0.4)
+
+    # --- Step 2: Tool Selection ---
+    selected_tool_payload = select_tool(user_intent)
+
+    print("  ┌─ Tool Selection")
+    print("  │")
+    print(f"  │  Selected Tool: {selected_tool_payload['tool']}")
+    print("  └───────────────────────────────\n")
+    time.sleep(0.4)
+
+    # --- Step 3: Tool Execution ---
+    result = execute_tool(selected_tool_payload)
+
+    print("  ┌─ Execution Result")
+    print("  │")
+    print(f"  │  Status:  {result['status']}")
+    print(f"  │  Output:  {result['output']}")
+    print(f"  │  Using:   {result['metadata']['tool']}")
+    print("  └───────────────────────────────\n")
 
 
 if __name__ == "__main__":
